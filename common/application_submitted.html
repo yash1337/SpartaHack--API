@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      html, body {
+        height: 100%;
+      }
+      html {
+        display: table;
+        margin: auto;
+      }
+      body {
+        display: table-cell;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        position: relative;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: ' ';
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background-color: white;
+        background: linear-gradient(white 59%, #f7c3ff 100%);
+        transition: opacity 0.5s linear;
+        background-size: cover;
+        will-change: transform;
+        z-index: -1;
+      }
+      #banner {
+        max-width: 600px;
+      }
+      .notice {
+        max-width: 600px;
+        padding: 0 15px;
+        -webkit-font-smoothing: antialiased;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #45044f;
+      }
+      #hey {
+        color: #3b0344;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        margin-top: 50px;
+        padding: 0 15px;
+      }
+      #image-wrap {
+        max-width: 600px;
+        padding: 0 15px;
+      }
+      #from {
+        color: #45044f;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 id="hey" >Hey {{ first_name }}! </h2>
+    <p class="notice" id="first">We're super excited that you applied! This is just a confirmation email
+    that we've received your application.</p>
+    <p class="notice" id="second">We send out our admissions decisions in waves each week, but if you don't
+    hear anything during the next one, don't worry! Your application is still
+    under consideration; it just means this wave filled up before we got you.</p>
+    <p id="from">- The SpartaHack Team</p>
+  </body>
+</html>

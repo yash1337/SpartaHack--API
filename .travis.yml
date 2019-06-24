@@ -1,0 +1,20 @@
+language: python
+os: linux
+sudo: false
+python:
+- '3.6'
+before_install:
+- openssl aes-256-cbc -K $encrypted_81d7f9ca274f_key -iv $encrypted_81d7f9ca274f_iv -in tests/tests.tar.enc -out tests/tests.tar -d
+- tar xvf tests/tests.tar -C tests
+- export PYTHONPATH=$PYTHONPATH:$(pwd)
+install:
+- pip install -r requirements.txt
+- npm install newman
+script:
+- export FLASK_ENV=DevelopmentConfig
+- export FLASK_APP=wsgi.py
+- flask run &
+- APP_PID=$!
+- node_modules/.bin/newman run tests/SpartaHack_API_2019_tests.postman_collection.json
+  -e tests/SpartaHack-API-2019_test.postman_environment.json
+- kill $APP_PID
